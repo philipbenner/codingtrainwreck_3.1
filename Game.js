@@ -9,7 +9,9 @@ function Game (_g){
 		wHeight: 0,
 		fieldWidth: 300,
 		fieldHeight : 300,
-		blockSize : 10
+		blockSize : 10,
+		maxWidth : 320,
+		maxHeight : 568 // iphone 5 stuff... 
 	};
 
 	this.stats = {
