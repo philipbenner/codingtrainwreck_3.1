@@ -7,10 +7,13 @@
 
 	<title>tw3.1</title>
 
-	<script src="../libraries/p5.js"></script>
-	<script src="../libraries/p5.dom.js"></script>
-	<script src="../libraries/p5.sound.js"></script>
-	<script src="sketch.js"></script>
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	
+	<script type="text/javascript" src="Game.js"></script>
+	<script type="text/javascript" src="Media.js"></script>
+	<script type="text/javascript" src="UI.js"></script>
 
 	<style>
 		body {
@@ -24,5 +27,25 @@
 	</style>
 </head>
 <body>
+	<div id="container"></div>
+	<script >
+		var sketch = function( p ) {
+
+		  var game;
+
+		  p.setup = function() {
+		  
+		    game = new Game(p);
+			game.init();
+		  };
+
+		  p.draw = function() {
+			game.draw();
+		  };
+		};
+
+		var trainGame = new p5(sketch,'container');
+
+	</script>
 </body>
 </html>
