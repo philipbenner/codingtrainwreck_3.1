@@ -2,7 +2,7 @@ function Game (_g){
 
 	this.game = _g;//reference to this IN p5
 	this.ui;
-	this.media;
+	this.model;
 
 	this.dimensions = {
 		wWidth: 0, 
@@ -17,6 +17,12 @@ function Game (_g){
 		highScore : 0,
 		attempt : 0
 	}
+
+	this.links = {
+		model : this.model,
+		game: this.game,
+		ui : this.ui
+	}
 }
 
 Game.prototype.init = function (){
@@ -24,13 +30,19 @@ Game.prototype.init = function (){
 	this.dimensions.wHeight = this.game.windowHeight;
 	
 	this.game.createCanvas(this.dimensions.wWidth, this.dimensions.wHeight);
-	console.log(this.dimensions);
+	//console.log(this.dimensions);
 
-	this.media = new Media(this.game);
-	this.media.init();
-
+	this.model = new Model(this.game);
 	this.ui = new UI(this.game);
-	this.ui.init();
+
+	this.links = {
+		game: this.game,
+		model : this.model,
+		ui : this.ui
+	}
+	
+	this.model.init(this.links);
+	this.ui.init( this.links);
 }
 
 Game.prototype.draw = function (){
